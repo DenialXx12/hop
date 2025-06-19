@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - ComfortWear</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Відкрити меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="logo">
+                    <div class="logo-icon">CW</div>
+                    <span class="logo-text">ComfortWear</span>
+                </div>
+                
+                <nav class="desktop-nav">
+                    <ul class="nav-list">
+                        <li><a href="/index.html" class="nav-link">Головна</a></li>
+                        <li><a href="/catalog.html" class="nav-link active">Каталог</a></li>
+                        <li><a href="/about.html" class="nav-link">Про нас</a></li>
+                        <li><a href="/contact.html" class="nav-link">Контакти</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <div class="cart" id="cart-toggle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay">
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <div class="mobile-menu-logo">
+                    <div class="mobile-logo-circle">
+                        <span class="mobile-logo-text">CW</span>
+                        <span class="mobile-logo-label">COMFORTWEAR</span>
+                    </div>
+                </div>
+                <button class="menu-close" aria-label="Закрити меню">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li><a href="/index.html" class="mobile-nav-link">ГОЛОВНА</a></li>
+                    <li><a href="/catalog.html" class="mobile-nav-link">КАТАЛОГ</a></li>
+                    <li><a href="/about.html" class="mobile-nav-link">ПРО НАС</a></li>
+                    <li><a href="/contact.html" class="mobile-nav-link">КОНТАКТИ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart-panel">
+            <div class="cart-header">
+                <div class="cart-title">
+                    <div class="cart-logo">
+                        <div class="cart-logo-circle">
+                            <span class="cart-logo-text">CW</span>
+                        </div>
+                        <span class="cart-logo-label">КОШИК</span>
+                    </div>
+                </div>
+                <button class="cart-close" id="cart-close" aria-label="Закрити кошик">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="cart-content">
+                <div class="cart-empty" id="cart-empty">
+                    <div class="empty-cart-icon">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Ваш кошик порожній</h3>
+                    <p>Додайте товари до кошика, щоб продовжити покупки</p>
+                    <a href="/catalog.html" class="continue-shopping">Продовжити покупки</a>
+                </div>
+                
+                <div class="cart-items" id="cart-items" style="display: none;">
+                    <!-- Cart items will be dynamically added here -->
+                </div>
+            </div>
+            
+            <div class="cart-footer" id="cart-footer" style="display: none;">
+                <div class="cart-total">
+                    <div class="total-row">
+                        <span>Підсумок:</span>
+                        <span class="total-price" id="total-price">0 ₴</span>
+                    </div>
+                </div>
+                <button class="checkout-btn">Оформити замовлення</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/index.html">Головна</a>
+                <span>/</span>
+                <span>Каталог</span>
+            </div>
+            <h1>Каталог товарів</h1>
+            <p>Оберіть найкращу нижню білизну для себе</p>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog">
+        <div class="container">
+            <div class="catalog-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>Фільтри</h3>
+                        <button class="filters-reset">Скинути</button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Категорія</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="boxers" checked>
+                                <span class="checkmark"></span>
+                                Боксери
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="briefs" checked>
+                                <span class="checkmark"></span>
+                                Труси
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="thermal" checked>
+                                <span class="checkmark"></span>
+                                Термобілизна
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="sets" checked>
+                                <span class="checkmark"></span>
+                                Комплекти
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Бренди</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="boxers" checked>
+                                <span class="checkmark"></span>
+                                Calvin Klein
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="briefs" checked>
+                                <span class="checkmark"></span>
+                                Boss
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="thermal" checked>
+                                <span class="checkmark"></span>
+                                Tommy Hilfiger
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="sets" checked>
+                                <span class="checkmark"></span>
+                                Lacoste
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Ціна</h4>
+                        <div class="price-range">
+                            <input type="range" min="100" max="1000" value="1000" class="price-slider">
+                            <div class="price-values">
+                                <span>100 ₴</span>
+                                <span>1000 ₴</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Розмір</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="S">
+                                <span class="checkmark"></span>
+                                S
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="M">
+                                <span class="checkmark"></span>
+                                M
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="L">
+                                <span class="checkmark"></span>
+                                L
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="XL">
+                                <span class="checkmark"></span>
+                                XL
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Колір</h4>
+                        <div class="color-filters">
+                            <label class="color-filter">
+                                <input type="checkbox" name="color" value="black">
+                                <span class="color-swatch" style="background: #000"></span>
+                                Чорний
+                            </label>
+                            <label class="color-filter">
+                                <input type="checkbox" name="color" value="white">
+                                <span class="color-swatch" style="background: #fff; border: 1px solid #ddd"></span>
+                                Білий
+                            </label>
+                            <label class="color-filter">
+                                <input type="checkbox" name="color" value="gray">
+                                <span class="color-swatch" style="background: #666"></span>
+                                Сірий
+                            </label>
+                            <label class="color-filter">
+                                <input type="checkbox" name="color" value="blue">
+                                <span class="color-swatch" style="background: #007bff"></span>
+                                Синій
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Products Grid -->
+                <div class="products-section">
+                    <div class="products-header">
+                        <div class="products-count">
+                            <span>Знайдено <strong>12</strong> товарів</span>
+                        </div>
+                        <div class="sort-options">
+                            <select class="sort-select">
+                                <option value="default">За замовчуванням</option>
+                                <option value="price-low">Ціна: від низької</option>
+                                <option value="price-high">Ціна: від високої</option>
+                                <option value="name">За назвою</option>
+                                <option value="rating">За рейтингом</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid">
+                        <div class="product-card" data-product='{"id": 1, "name": "Преміум боксери ComfortWear", "price": 399, "originalPrice": 499, "image": "https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=400", "sizes": ["S", "M", "L", "XL"], "colors": ["Чорний", "Білий", "Сірий"], "category": "boxers"}'>
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Преміум боксери">
+                                <div class="product-badge">-20%</div>
+                                <div class="product-overlay">
+                                    <button class="add-to-cart-btn">Додати в кошик</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Преміум боксери ComfortWear</h3>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(24)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">399 ₴</span>
+                                    <span class="original-price">499 ₴</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-product='{"id": 2, "name": "Класичні труси", "price": 299, "image": "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=400", "sizes": ["S", "M", "L", "XL"], "colors": ["Чорний", "Білий"], "category": "briefs"}'>
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Класичні труси">
+                                <div class="product-overlay">
+                                    <button class="add-to-cart-btn">Додати в кошик</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Класичні труси</h3>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(18)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">299 ₴</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-product='{"id": 3, "name": "Термобілизна Active", "price": 699, "image": "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400", "sizes": ["S", "M", "L", "XL"], "colors": ["Чорний", "Сірий"], "category": "thermal"}'>
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Термобілизна Active">
+                                <div class="product-overlay">
+                                    <button class="add-to-cart-btn">Додати в кошик</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Термобілизна Active</h3>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(31)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">699 ₴</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-product='{"id": 4, "name": "Комплект Premium", "price": 899, "originalPrice": 1199, "image": "https://images.pexels.com/photos/8532837/pexels-photo-8532837.jpeg?auto=compress&cs=tinysrgb&w=400", "sizes": ["M", "L", "XL"], "colors": ["Чорний", "Сірий"], "category": "sets"}'>
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/8532837/pexels-photo-8532837.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Комплект Premium">
+                                <div class="product-badge">-25%</div>
+                                <div class="product-overlay">
+                                    <button class="add-to-cart-btn">Додати в кошик</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Комплект Premium</h3>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(15)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">899 ₴</span>
+                                    <span class="original-price">1199 ₴</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-product='{"id": 5, "name": "Спортивні боксери", "price": 449, "image": "https://images.pexels.com/photos/7679466/pexels-photo-7679466.jpeg?auto=compress&cs=tinysrgb&w=400", "sizes": ["S", "M", "L", "XL"], "colors": ["Чорний", "Синій"], "category": "boxers"}'>
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/7679466/pexels-photo-7679466.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Спортивні боксери">
+                                <div class="product-overlay">
+                                    <button class="add-to-cart-btn">Додати в кошик</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Спортивні боксери</h3>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★☆</div>
+                                    <span class="rating-count">(12)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">449 ₴</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-product='{"id": 6, "name": "Комфортні труси", "price": 349, "image": "https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=400", "sizes": ["S", "M", "L", "XL"], "colors": ["Білий", "Сірий"], "category": "briefs"}'>
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Комфортні труси">
+                                <div class="product-overlay">
+                                    <button class="add-to-cart-btn">Додати в кошик</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Комфортні труси</h3>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(22)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">349 ₴</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>←</button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">→</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-icon">CW</div>
+                        <span class="logo-text">ComfortWear</span>
+                    </div>
+                    <p>Преміум нижня білизна для сучасних чоловіків. Комфорт та якість в кожній деталі.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Каталог</h3>
+                    <ul>
+                        <li><a href="/catalog.html">Боксери</a></li>
+                        <li><a href="/catalog.html">Труси</a></li>
+                        <li><a href="/catalog.html">Термобілизна</a></li>
+                        <li><a href="/catalog.html">Комплекти</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Інформація</h3>
+                    <ul>
+                        <li><a href="/about.html">Про нас</a></li>
+                        <li><a href="#">Доставка та оплата</a></li>
+                        <li><a href="#">Повернення та обмін</a></li>
+                        <li><a href="#">Розмірна сітка</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакти</h3>
+                    <div class="contact-info">
+                        <p>📞 +380 (99) 123 45 67</p>
+                        <p>✉️ info@comfortwear.ua</p>
+                        <p>📍 м. Київ, вул. Хрещатик, 1</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="#">Політика конфіденційності</a>
+                    <a href="#">Умови використання</a>
+                </div>
+                <div class="copyright">
+                    © 2025 ComfortWear. Всі права захищені.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
+    
