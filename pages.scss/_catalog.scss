@@ -1,0 +1,218 @@
+/* Catalog Page Styles */
+
+.catalog {
+  padding: $space-5 0 100px;
+  background: $white;
+}
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: $space-5;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.filters-sidebar {
+  background: $gray-50;
+  padding: $space-4;
+  border-radius: $radius-xl;
+  height: fit-content;
+  position: sticky;
+  top: 120px;
+
+  @media (max-width: $tablet) {
+    position: static;
+    order: 2;
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $space-4;
+  padding-bottom: 20px;
+  border-bottom: 2px solid $gray-100;
+
+  h3 {
+    font-size: $text-2xl;
+    font-weight: $font-semibold;
+    color: $gray-800;
+  }
+}
+
+.filters-reset {
+  background: none;
+  border: none;
+  color: $primary-blue;
+  cursor: pointer;
+  font-weight: $font-medium;
+  text-decoration: underline;
+}
+
+.filter-group {
+  margin-bottom: $space-4;
+
+  h4 {
+    font-size: $text-lg;
+    font-weight: $font-semibold;
+    color: $gray-800;
+    margin-bottom: $space-2;
+  }
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: $text-sm;
+  color: $gray-600;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ddd;
+  border-radius: $radius-sm;
+  position: relative;
+  transition: $transition-fast;
+
+  .filter-option input[type="checkbox"]:checked + & {
+    background: $primary-blue;
+    border-color: $primary-blue;
+
+    &::after {
+      content: "✓";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}
+
+.price-range {
+  margin-bottom: $space-2;
+}
+
+.price-slider {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: $text-sm;
+  color: $gray-500;
+}
+
+.color-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.color-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: $text-sm;
+  color: $gray-600;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-full;
+  border: 2px solid transparent;
+  transition: $transition-fast;
+
+  .color-filter input[type="checkbox"]:checked + & {
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 2px rgba($primary-blue, 0.2);
+  }
+}
+
+.products-section {
+  min-height: 600px;
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $space-4;
+  padding-bottom: 20px;
+  border-bottom: 2px solid $gray-50;
+}
+
+.products-count {
+  color: $gray-500;
+
+  strong {
+    color: $gray-800;
+  }
+}
+
+.sort-select {
+  padding: 10px $space-2;
+  border: 2px solid $gray-100;
+  border-radius: $radius-md;
+  background: $white;
+  color: $gray-600;
+  cursor: pointer;
+  outline: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.pagination-btn {
+  padding: 10px $space-2;
+  border: 2px solid $gray-100;
+  background: $white;
+  color: $gray-600;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:hover,
+  &.active {
+    background: $primary-blue;
+    color: $white;
+    border-color: $primary-blue;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

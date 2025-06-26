@@ -1254,4 +1254,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => alert("Помилка при відправці"));
   }
   form.addEventListener("submit", handleSendForm);
+  const items = document.querySelector(".product-card")
+  console.log(items);
+  
 });
+

@@ -1,0 +1,22 @@
+// Base styles
+@import '/base.scss/reset';
+@import '/base.scss/variables';
+
+// Utils
+@import '/utils.scss/animations';
+@import '/utils.scss/mixins';
+
+// Components
+@import '/components.scss/cart';
+@import '/components.scss/footer';
+@import '/components.scss/header';
+@import '/components.scss/navigation';
+
+// Pages
+@import '/pages.scss/about';
+@import '/pages.scss/catalog';
+@import '/pages.scss/contact';
+@import '/pages.scss/home';
+
+// Responsive
+@import '/utils.scss/responsive';
